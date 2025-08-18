@@ -1,0 +1,68 @@
+---
+title: "Analyse de survie avec R"
+format: html
+---
+
+```{r setup, include=FALSE}
+
+# Chargement des librairies
+library(survival)
+library(survminer)
+
+```
+
+\# Chargement des librairies library(survival) library(survminer)
+
+```{r data, include=FALSE}
+data(lung)
+head(lung)
+
+```
+
+```{r surv, include=TRUE}
+
+surv_obj <- Surv(time = lung$time, event = lung$status)
+surv_obj[1:10]
+
+```
+
+```{r survfit, include=TRUE}
+
+km_fit <- survfit(surv_obj ~ 1, data = lung)
+
+ggsurvplot(
+  km_fit,
+  conf.int = TRUE,
+  risk.table = TRUE,
+  title = "Courbe de survie globale (Kaplan-Meier)",
+  xlab = "Temps (jours)",
+  ylab = "Probabilité de survie"
+)
+
+```
+
+```{r ggplot, include=TRUE}
+
+km_fit_group <- survfit(surv_obj ~ sex, data = lung)
+
+ggsurvplot(
+  km_fit_group,
+  data = lung,
+  pval = TRUE,
+  conf.int = TRUE,
+  risk.table = TRUE,
+  legend.title = "Sexe",
+  legend.labs = c("Homme", "Femme")
+)
+
+
+```
+
+```{r coxph, include=TRUE}
+
+
+cox_fit <- coxph(surv_obj ~ age + sex, data = lung)
+summary(cox_fit)
+
+
+```
