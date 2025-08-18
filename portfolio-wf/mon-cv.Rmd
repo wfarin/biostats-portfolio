@@ -1,0 +1,15 @@
+---
+title: "Mon CV"
+---
+
+# 📄 Mon CV
+
+<iframe src="william_farin.pdf" width="100%" height="800px" style="border: none;">
+
+</iframe>
+
+------------------------------------------------------------------------
+
+## 🔗 Télécharger
+
+👉 [Télécharger le CV en PDF](william_farin.pdf){target="_blank"}

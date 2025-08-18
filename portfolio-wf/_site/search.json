@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "portfolio-wf",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "mon-cv.html",
+    "href": "mon-cv.html",
+    "title": "Mon CV",
+    "section": "",
+    "text": "👉 Télécharger le CV en PDF"
+  },
+  {
+    "objectID": "mon-cv.html#télécharger",
+    "href": "mon-cv.html#télécharger",
+    "title": "Mon CV",
+    "section": "",
+    "text": "👉 Télécharger le CV en PDF"
+  }
+]
