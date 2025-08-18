@@ -7,13 +7,6 @@
     "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
   },
   {
-    "objectID": "survival_analysis.html",
-    "href": "survival_analysis.html",
-    "title": "Analyse de survie avec R",
-    "section": "",
-    "text": "# Chargement des librairies library(survival) library(survminer)\n\nsurv_obj &lt;- Surv(time = lung$time, event = lung$status)\nsurv_obj[1:10]\n\n [1]  306   455  1010+  210   883  1022+  310   361   218   166 \n\n\n\nkm_fit &lt;- survfit(surv_obj ~ 1, data = lung)\n\nggsurvplot(\n  km_fit,\n  conf.int = TRUE,\n  risk.table = TRUE,\n  title = \"Courbe de survie globale (Kaplan-Meier)\",\n  xlab = \"Temps (jours)\",\n  ylab = \"Probabilité de survie\"\n)\n\n\n\n\n\n\n\n\n\nkm_fit_group &lt;- survfit(surv_obj ~ sex, data = lung)\n\nggsurvplot(\n  km_fit_group,\n  data = lung,\n  pval = TRUE,\n  conf.int = TRUE,\n  risk.table = TRUE,\n  legend.title = \"Sexe\",\n  legend.labs = c(\"Homme\", \"Femme\")\n)\n\n\n\n\n\n\n\n\n\ncox_fit &lt;- coxph(surv_obj ~ age + sex, data = lung)\nsummary(cox_fit)\n\nCall:\ncoxph(formula = surv_obj ~ age + sex, data = lung)\n\n  n= 228, number of events= 165 \n\n         coef exp(coef)  se(coef)      z Pr(&gt;|z|)   \nage  0.017045  1.017191  0.009223  1.848  0.06459 . \nsex -0.513219  0.598566  0.167458 -3.065  0.00218 **\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n    exp(coef) exp(-coef) lower .95 upper .95\nage    1.0172     0.9831    0.9990    1.0357\nsex    0.5986     1.6707    0.4311    0.8311\n\nConcordance= 0.603  (se = 0.025 )\nLikelihood ratio test= 14.12  on 2 df,   p=9e-04\nWald test            = 13.47  on 2 df,   p=0.001\nScore (logrank) test = 13.72  on 2 df,   p=0.001"
-  },
-  {
     "objectID": "mon-cv.html",
     "href": "mon-cv.html",
     "title": "Mon CV",
@@ -26,5 +19,19 @@
     "title": "Mon CV",
     "section": "",
     "text": "👉 Télécharger le CV en PDF"
+  },
+  {
+    "objectID": "survival_analysis.html",
+    "href": "survival_analysis.html",
+    "title": "Analyse de survie avec R",
+    "section": "",
+    "text": "# Chargement des librairies library(survival) library(survminer)\n\nsurv_obj &lt;- Surv(time = lung$time, event = lung$status)\nsurv_obj[1:10]\n\n [1]  306   455  1010+  210   883  1022+  310   361   218   166 \n\n\n\nkm_fit &lt;- survfit(surv_obj ~ 1, data = lung)\n\nggsurvplot(\n  km_fit,\n  conf.int = TRUE,\n  risk.table = TRUE,\n  title = \"Courbe de survie globale (Kaplan-Meier)\",\n  xlab = \"Temps (jours)\",\n  ylab = \"Probabilité de survie\"\n)\n\n\n\n\n\n\n\n\n\nkm_fit_group &lt;- survfit(surv_obj ~ sex, data = lung)\n\nggsurvplot(\n  km_fit_group,\n  data = lung,\n  pval = TRUE,\n  conf.int = TRUE,\n  risk.table = TRUE,\n  legend.title = \"Sexe\",\n  legend.labs = c(\"Homme\", \"Femme\")\n)\n\n\n\n\n\n\n\n\n\ncox_fit &lt;- coxph(surv_obj ~ age + sex, data = lung)\nsummary(cox_fit)\n\nCall:\ncoxph(formula = surv_obj ~ age + sex, data = lung)\n\n  n= 228, number of events= 165 \n\n         coef exp(coef)  se(coef)      z Pr(&gt;|z|)   \nage  0.017045  1.017191  0.009223  1.848  0.06459 . \nsex -0.513219  0.598566  0.167458 -3.065  0.00218 **\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n    exp(coef) exp(-coef) lower .95 upper .95\nage    1.0172     0.9831    0.9990    1.0357\nsex    0.5986     1.6707    0.4311    0.8311\n\nConcordance= 0.603  (se = 0.025 )\nLikelihood ratio test= 14.12  on 2 df,   p=9e-04\nWald test            = 13.47  on 2 df,   p=0.001\nScore (logrank) test = 13.72  on 2 df,   p=0.001"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
   }
 ]
