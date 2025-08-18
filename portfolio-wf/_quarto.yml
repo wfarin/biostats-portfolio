@@ -8,8 +8,6 @@ website:
     left:
       - href: index.qmd
         text: Accueil
-      - href: survival_analysis.qmd
-        text: survival analysis
       - href: mon-cv.qmd
         text: mon cv
       - about.qmd
