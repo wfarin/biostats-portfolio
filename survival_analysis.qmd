@@ -67,9 +67,13 @@ summary(cox_fit)
 
 ```
 
+## Sample Size Calculation
+
+The exercice in this section is to calculate the minimal sample size to achieve at least 80% of statistical power and 5% of alpha
+
 ## SAMPLE SIZE WITH RPACT
 
-```{r, warning=FALSE}
+```{r, warning=FALSE, message=FALSE}
 library(rpact)
 library(tidyverse)
 library(gsDesign)
