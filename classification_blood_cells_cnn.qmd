@@ -2,8 +2,6 @@
 title: "Classification of blood cells with CNN"
 ---
 
-# C
-
 # **Objectives**
 
 The goal of this project is to identify different types of blood cells using computer vision algorithms. The density and relative abundance of blood cells in a smear are crucial for diagnosing many pathologies, such as leukemia, which relies on the lymphocyte ratio. The identification of abnormal leukocytes in diseases like leukemia could complement this first step.

@@ -11,7 +11,7 @@ website:
       - href: survival_analysis.qmd
         text: Survival Analysis (R)
       - href: classification_blood_cells_cnn.qmd
-        text: Classification of blood cells with CNN (Python: Deep Learning)
+        text: Classification of blood cells with CNN
       - href: mon-cv.qmd
         text: my CV
       
