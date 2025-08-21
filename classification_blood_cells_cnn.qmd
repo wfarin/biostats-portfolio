@@ -1,0 +1,101 @@
+---
+title: "Classification of blood cells with CNN"
+---
+
+Contexte
+
+L’automatisation de la classification cellulaire répond à un besoin réel du monde médical :
+réduire le temps de diagnostic, limiter les erreurs humaines, et permettre un accès plus
+large aux examens cytologiques, y compris dans des contextes à faibles ressources. Un tel
+outil peut contribuer à améliorer la rentabilité et l'efficacité des laboratoires, tout en
+soulageant le personnel médical spécialisé.
+
+D’un point de vue scientifique, ce projet est en lien avec les recherches actuelles en IA
+appliquées à la santé. Il mobilise les connaissances issues de publications récentes sur la
+classification d’images médicales, en s’appuyant sur des bases de données réelles. L’un
+des défis majeurs est la détection de cellules rares ou atypiques (lymphocytes atypiques,
+smudge cells, …), souvent essentielles pour le diagnostic de maladies comme la leucémie.
+
+Objectifs
+
+L’objectif de ce projet est d’identifier les différents types de cellules du sang à l’aide
+d'algorithmes de computer vision. La densité et l’abondance relative des cellules du sang
+dans le frottis est cruciale pour le diagnostic de nombreuses pathologies, comme par
+exemple pour la leucémie qui repose sur le ratio de lymphocytes. L’identification de
+leucocytes anormaux dans des pathologies telles que la leucémie pourrait compléter
+cette première partie.
+Développer un outil capable d'analyser les cellules à partir de frottis sanguins pourrait
+faciliter le diagnostic de certaines pathologies mais aussi être utilisé à but de recherche.
+
+Pre-processing et feature engineering
+
+Une image corrompue dans le dataset munich a été supprimée. Les images ont été
+converties en format png pour pouvoir utiliser la méthode adéquate
+image_dataset_from_directory de keras qui permet d’importer de manière dynamique
+des images. De plus, la taille des images png est 10 fois moins importante que les images
+tiffs.
+Par ailleurs, une détection des outliers est prévue en analysant deux caractéristiques : la
+luminosité (moyenne des niveaux de gris) et le contraste (écart type des niveaux de gris)
+de chaque image (ScienceDirect Topics, Image Contrast). Une image est considérée
+comme un outlier si sa luminosité s’écarte de plus de deux écarts-types par rapport à la
+moyenne globale des luminosités du dataset. Le même principe est appliqué au contraste
+: toute image dont l’écart type s’écarte de plus de deux écarts-types.
+
+Masque
+
+Dans le cadre de la classification d’images de cellules, l’un des enjeux majeurs est de
+focaliser l’attention du modèle sur les zones réellement pertinentes : les cellules
+elles-mêmes, et non les éléments de fond (artefacts, bruit, globules hors champ, etc.). En
+effet, les images issues de frottis sanguins contiennent souvent des informations
+parasites : variations de lumière, tâches, zones floues, ou encore présence de plusieurs
+cellules partiellement visibles. Cela peut perturber le modèle de classification en
+l’amenant à apprendre des caractéristiques non discriminantes voire nuisibles.
+Pour pallier ce problème, une étape de segmentation préalable a été introduite. Cette
+étape repose sur l’utilisation d’un modèle de type U-Net, architecture largement utilisée
+en segmentation d’image biomédicale. Le U-Net est un réseau de neurones convolutif
+avec une architecture en forme de U, composée d’un encodeur (qui extrait des
+caractéristiques globales de l’image) et d’un décodeur symétrique (qui reconstruit une
+carte de segmentation à la même résolution que l’entrée), avec des connexions dites de
+skip-connections permettant de préserver les détails fins lors de la reconstruction.
+
+Le modèle de classification finale utilisant le transfer Learning
+
+Le modèle CNN final intègre les masques générés en entrée, combinés avec le transfert
+learning sur ResNet50. Nous avons conçu une architecture où le réseau reçoit l’image
+masquée et extrait des caractéristiques grâce aux couches convolutives pré-entraînées. Ce
+système a permis d’améliorer significativement les performances par rapport au CNN
+simple, en focalisant le modèle sur les régions réellement pertinentes grâce aux masques.
+
+Stratégie d'entraînement du modèle complet
+
+Nous avons retenu le modèle ResNet50 avec fine-tuning progressif, car il offrait le meilleur
+compromis entre précision, stabilité d'entraînement et temps de calcul.
+Le modèle a été entraîné en plusieurs phases : initiation, dégel partiel et dégèle totale. Le
+modèle a été compilé avec la fonction de perte sparse_categorical_crossentropy,
+appropriée pour une tâche de classification multiclasse.
+Pour faire face à un déséquilibre de classes comme annoncé précédemment, deux
+approches complémentaires ont été mises en œuvre :
+● Data augmentation : Il y a 3 classes minoritaires (débris, immature monocyte et
+erythroid) qui ont respectivement 10, 17 et 50 images dans les jeux d'entraînement
+après le split. Ces images sont artificiellement augmentées par simple rotation
+aléatoire (25 fois par images) sans toucher au zoom, la translation ou encore le
+contraste. Après augmentation il y a donc 260 (250 + 10) images de débris, 442
+(425 + 17) immatures monocytes et 1300(1250 + 50) erythroids.
+● Poids de classe : Des poids différenciés ont été intégrés dans la fonction de perte
+afin de compenser le déséquilibre allant de 0.3 à 8.6. Il est important d’éviter des
+poids trop extrêmes afin d’avoir un ajustement assez modéré.
+
+C. L’interprétation de la dernière couche de convolution
+
+La figure ci-dessous met en évidence les régions de l’image ayant contribué le plus à la
+prédiction. Ici, on observe que le modèle se concentre bien sur la zone centrale
+contenant le noyau granuleux caractéristique des basophiles, ce qui renforce la
+confiance dans la classification automatique. Cela montre l’importance des masques
+dans la classification des cellules en excluant les zones non d'intérêt qui peuvent polluer
+l’apprentissage de patterns intéressants et spécifiques.
+
+D. Evaluation des performances
+La matrice de confusion sur le jeu de test montre de très bonnes performances sur
+un jeu de données jamais vu. L’accuracy sur le jeu de test est de 0.94.
+
+<https://github.com/wfarin/mars25_bds_blood_cells>

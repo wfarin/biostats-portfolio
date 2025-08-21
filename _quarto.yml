@@ -8,6 +8,10 @@ website:
     left:
       - href: index.qmd
         text: Accueil
+      - href: survival_analysis.qmd
+        text: Survival Analysis
+      - href: classification_blood_cells_cnn.qmd
+        text: Classification of blood cells with CNN
       - href: mon-cv.qmd
         text: mon cv
       - about.qmd

@@ -1,0 +1,5 @@
+---
+title: "Classification of blood cells with CNN"
+---
+
+<https://github.com/wfarin/mars25_bds_blood_cells>
