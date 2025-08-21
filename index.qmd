@@ -2,10 +2,4 @@
 title: "portfolio-wf"
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```
+I am a biostatistician / data scientist with over 10 years of experience in the analysis of biological and clinical data, specializing in biomarkers and the microbiome. This repository gathers several projects showcasing my skills in applied statistics, machine learning, and deep learning.
