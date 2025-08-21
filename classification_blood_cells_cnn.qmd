@@ -2,100 +2,46 @@
 title: "Classification of blood cells with CNN"
 ---
 
-Contexte
+# C
 
-L’automatisation de la classification cellulaire répond à un besoin réel du monde médical :
-réduire le temps de diagnostic, limiter les erreurs humaines, et permettre un accès plus
-large aux examens cytologiques, y compris dans des contextes à faibles ressources. Un tel
-outil peut contribuer à améliorer la rentabilité et l'efficacité des laboratoires, tout en
-soulageant le personnel médical spécialisé.
+# **Objectives**
 
-D’un point de vue scientifique, ce projet est en lien avec les recherches actuelles en IA
-appliquées à la santé. Il mobilise les connaissances issues de publications récentes sur la
-classification d’images médicales, en s’appuyant sur des bases de données réelles. L’un
-des défis majeurs est la détection de cellules rares ou atypiques (lymphocytes atypiques,
-smudge cells, …), souvent essentielles pour le diagnostic de maladies comme la leucémie.
+The goal of this project is to identify different types of blood cells using computer vision algorithms. The density and relative abundance of blood cells in a smear are crucial for diagnosing many pathologies, such as leukemia, which relies on the lymphocyte ratio. The identification of abnormal leukocytes in diseases like leukemia could complement this first step.
 
-Objectifs
+Developing a tool capable of analyzing cells from blood smears could not only facilitate the diagnosis of certain pathologies but also be applied in a research context.
 
-L’objectif de ce projet est d’identifier les différents types de cellules du sang à l’aide
-d'algorithmes de computer vision. La densité et l’abondance relative des cellules du sang
-dans le frottis est cruciale pour le diagnostic de nombreuses pathologies, comme par
-exemple pour la leucémie qui repose sur le ratio de lymphocytes. L’identification de
-leucocytes anormaux dans des pathologies telles que la leucémie pourrait compléter
-cette première partie.
-Développer un outil capable d'analyser les cellules à partir de frottis sanguins pourrait
-faciliter le diagnostic de certaines pathologies mais aussi être utilisé à but de recherche.
+# **Pre-processing and Feature Engineering**
 
-Pre-processing et feature engineering
+One corrupted image in the Munich dataset was removed. The images were converted to PNG format in order to use Keras’ `image_dataset_from_directory` method, which enables dynamic image loading. In addition, PNG images are approximately ten times smaller than TIFF images.
 
-Une image corrompue dans le dataset munich a été supprimée. Les images ont été
-converties en format png pour pouvoir utiliser la méthode adéquate
-image_dataset_from_directory de keras qui permet d’importer de manière dynamique
-des images. De plus, la taille des images png est 10 fois moins importante que les images
-tiffs.
-Par ailleurs, une détection des outliers est prévue en analysant deux caractéristiques : la
-luminosité (moyenne des niveaux de gris) et le contraste (écart type des niveaux de gris)
-de chaque image (ScienceDirect Topics, Image Contrast). Une image est considérée
-comme un outlier si sa luminosité s’écarte de plus de deux écarts-types par rapport à la
-moyenne globale des luminosités du dataset. Le même principe est appliqué au contraste
-: toute image dont l’écart type s’écarte de plus de deux écarts-types.
+Furthermore, an outlier detection step was planned based on two features: brightness (mean gray level) and contrast (standard deviation of gray levels) for each image (ScienceDirect Topics, *Image Contrast*). An image is considered an outlier if its brightness deviates by more than two standard deviations from the global mean brightness of the dataset. The same principle is applied to contrast: any image whose standard deviation deviates by more than two standard deviations is flagged as an outlier.
 
-Masque
+# **Segmentation with Masks**
 
-Dans le cadre de la classification d’images de cellules, l’un des enjeux majeurs est de
-focaliser l’attention du modèle sur les zones réellement pertinentes : les cellules
-elles-mêmes, et non les éléments de fond (artefacts, bruit, globules hors champ, etc.). En
-effet, les images issues de frottis sanguins contiennent souvent des informations
-parasites : variations de lumière, tâches, zones floues, ou encore présence de plusieurs
-cellules partiellement visibles. Cela peut perturber le modèle de classification en
-l’amenant à apprendre des caractéristiques non discriminantes voire nuisibles.
-Pour pallier ce problème, une étape de segmentation préalable a été introduite. Cette
-étape repose sur l’utilisation d’un modèle de type U-Net, architecture largement utilisée
-en segmentation d’image biomédicale. Le U-Net est un réseau de neurones convolutif
-avec une architecture en forme de U, composée d’un encodeur (qui extrait des
-caractéristiques globales de l’image) et d’un décodeur symétrique (qui reconstruit une
-carte de segmentation à la même résolution que l’entrée), avec des connexions dites de
-skip-connections permettant de préserver les détails fins lors de la reconstruction.
+In the context of cell image classification, one of the major challenges is to direct the model’s attention toward the truly relevant regions — the cells themselves — rather than background elements (artifacts, noise, out-of-focus cells, etc.). Indeed, blood smear images often contain parasitic information such as lighting variations, stains, blurry areas, or multiple partially visible cells. These factors can mislead the classifier, causing it to learn non-discriminative or even detrimental features.
 
-Le modèle de classification finale utilisant le transfer Learning
+To address this issue, a preliminary segmentation step was introduced. This step relies on a U-Net–based model, an architecture widely used in biomedical image segmentation. U-Net is a convolutional neural network with a U-shaped design, composed of an encoder (extracting global image features) and a symmetric decoder (reconstructing the segmentation map at the original resolution). Skip connections between encoder and decoder layers preserve fine-grained spatial details during reconstruction.
 
-Le modèle CNN final intègre les masques générés en entrée, combinés avec le transfert
-learning sur ResNet50. Nous avons conçu une architecture où le réseau reçoit l’image
-masquée et extrait des caractéristiques grâce aux couches convolutives pré-entraînées. Ce
-système a permis d’améliorer significativement les performances par rapport au CNN
-simple, en focalisant le modèle sur les régions réellement pertinentes grâce aux masques.
+# **Final Classification Model Using Transfer Learning**
 
-Stratégie d'entraînement du modèle complet
+The final CNN model incorporates the input masks generated during the segmentation step, combined with transfer learning on ResNet50. We designed an architecture in which the network receives the masked image and extracts features through the pre-trained convolutional layers. This approach significantly improved performance compared to a simple CNN, by directing the model’s focus toward the truly relevant regions of the image using the masks.
 
-Nous avons retenu le modèle ResNet50 avec fine-tuning progressif, car il offrait le meilleur
-compromis entre précision, stabilité d'entraînement et temps de calcul.
-Le modèle a été entraîné en plusieurs phases : initiation, dégel partiel et dégèle totale. Le
-modèle a été compilé avec la fonction de perte sparse_categorical_crossentropy,
-appropriée pour une tâche de classification multiclasse.
-Pour faire face à un déséquilibre de classes comme annoncé précédemment, deux
-approches complémentaires ont été mises en œuvre :
-● Data augmentation : Il y a 3 classes minoritaires (débris, immature monocyte et
-erythroid) qui ont respectivement 10, 17 et 50 images dans les jeux d'entraînement
-après le split. Ces images sont artificiellement augmentées par simple rotation
-aléatoire (25 fois par images) sans toucher au zoom, la translation ou encore le
-contraste. Après augmentation il y a donc 260 (250 + 10) images de débris, 442
-(425 + 17) immatures monocytes et 1300(1250 + 50) erythroids.
-● Poids de classe : Des poids différenciés ont été intégrés dans la fonction de perte
-afin de compenser le déséquilibre allant de 0.3 à 8.6. Il est important d’éviter des
-poids trop extrêmes afin d’avoir un ajustement assez modéré.
+# **Training Strategy for the Full Model**
 
-C. L’interprétation de la dernière couche de convolution
+We chose the ResNet50 model with progressive fine-tuning, as it offered the best trade-off between accuracy, training stability, and computational time. The model was trained in several phases: initialization, partial unfreezing, and full unfreezing. It was compiled using the `sparse_categorical_crossentropy` loss function, appropriate for a multi-class classification task.
 
-La figure ci-dessous met en évidence les régions de l’image ayant contribué le plus à la
-prédiction. Ici, on observe que le modèle se concentre bien sur la zone centrale
-contenant le noyau granuleux caractéristique des basophiles, ce qui renforce la
-confiance dans la classification automatique. Cela montre l’importance des masques
-dans la classification des cellules en excluant les zones non d'intérêt qui peuvent polluer
-l’apprentissage de patterns intéressants et spécifiques.
+To address class imbalance, as mentioned earlier, two complementary approaches were implemented:
 
-D. Evaluation des performances
-La matrice de confusion sur le jeu de test montre de très bonnes performances sur
-un jeu de données jamais vu. L’accuracy sur le jeu de test est de 0.94.
+-   **Data augmentation:** There are three minority classes (debris, immature monocytes, and erythroids) with 10, 17, and 50 images in the training set after the split, respectively. These images were artificially augmented using simple random rotations (25 times per image), without modifying zoom, translation, or contrast. After augmentation, there are therefore 260 (250 + 10) debris images, 442 (425 + 17) immature monocyte images, and 1300 (1250 + 50) erythroid images.
+
+-   **Class weights:** Differentiated weights were incorporated into the loss function to compensate for the imbalance, ranging from 0.3 to 8.6. It is important to avoid excessively extreme weights to maintain a moderate adjustment.
+
+# **Interpretation of the Final Convolutional Layer**
+
+The figure below highlights the regions of the image that contributed most to the prediction. Here, we observe that the model correctly focuses on the central area containing the granular nucleus characteristic of basophils, which reinforces confidence in the automatic classification. This demonstrates the importance of masks in cell classification, by excluding non-relevant regions that could otherwise interfere with the learning of meaningful and specific patterns.
+
+# **Performance Evaluation**
+
+The confusion matrix on the test set demonstrates very good performance on previously unseen data. The accuracy on the test set is 0.94.
 
 <https://github.com/wfarin/mars25_bds_blood_cells>
