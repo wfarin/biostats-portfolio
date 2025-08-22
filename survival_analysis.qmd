@@ -69,9 +69,19 @@ summary(cox_fit)
 
 ## Sample Size Calculation
 
-The exercice in this section is to calculate the minimal sample size to achieve at least 80% of statistical power and 5% of alpha
+The objective of this exercise is to calculate the minimal sample size required to achieve **80% statistical power** with a **5% significance level (α = 0.05)**.
 
-The first group has a survival median of 9 months and the second group has a median of 13 monthsbased on litterature. How many patient do we need t osee a siguinifcant difference of suvival between the two groups
+We assume two groups with survival medians reported in the literature:
+
+-   **Group 1 (control):** median survival = 9 months
+
+-   **Group 2 (treatment):** median survival = 13 months
+
+The question is: *How many patients are required to detect a statistically significant difference in survival between the two groups?*
+
+We use the `rpact` R package to perform the sample size calculation:
+
+The assumed accrual time is set to 8 months and the followup to 10 months.
 
 ## SAMPLE SIZE WITH RPACT
 
@@ -86,9 +96,8 @@ get_number <- function (x, element) {
 }
 
 sampleSize_rpact <- getSampleSizeSurvival(accrualTime = 8, followUpTime = 10,
-    sided = 1, alpha = 0.05, beta = 0.2,
-    median1 = 9, median2 = 14.5,
-)
+                                          sided = 2, alpha = 0.10, beta = 0.2,
+                                          median1 = 9, median2 = 13)
 kable(sampleSize_rpact)
 ```
 
