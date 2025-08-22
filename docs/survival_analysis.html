@@ -275,6 +275,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
 <section id="sample-size-calculation" class="level2">
 <h2 class="anchored" data-anchor-id="sample-size-calculation">Sample Size Calculation</h2>
 <p>The exercice in this section is to calculate the minimal sample size to achieve at least 80% of statistical power and 5% of alpha</p>
+<p>The first group has a survival median of 9 months and the second group has a median of 13 monthsbased on litterature. How many patient do we need t osee a siguinifcant difference of suvival between the two groups</p>
 </section>
 <section id="sample-size-with-rpact" class="level2">
 <h2 class="anchored" data-anchor-id="sample-size-with-rpact">SAMPLE SIZE WITH RPACT</h2>
@@ -288,15 +289,11 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  x[[element]]</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>PATH_OUTPUT <span class="ot">&lt;-</span> <span class="fu">getwd</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dirname</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.path</span>(<span class="st">"output"</span>)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>sampleSize_rpact <span class="ot">&lt;-</span> <span class="fu">getSampleSizeSurvival</span>(<span class="at">accrualTime =</span> <span class="dv">8</span>, <span class="at">followUpTime =</span> <span class="dv">10</span>,</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">sided =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>, <span class="at">beta =</span> <span class="fl">0.2</span>,</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">median1 =</span> <span class="dv">9</span>, <span class="at">median2 =</span> <span class="fl">14.5</span>,</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(sampleSize_rpact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>sampleSize_rpact <span class="ot">&lt;-</span> <span class="fu">getSampleSizeSurvival</span>(<span class="at">accrualTime =</span> <span class="dv">8</span>, <span class="at">followUpTime =</span> <span class="dv">10</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">sided =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>, <span class="at">beta =</span> <span class="fl">0.2</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">median1 =</span> <span class="dv">9</span>, <span class="at">median2 =</span> <span class="fl">14.5</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(sampleSize_rpact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><em>Design plan parameters and output for survival data</em></p>
 <p><em>Design parameters</em></p>
@@ -553,23 +550,23 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
 <span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Tables with new inputs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="zusdarbuha" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zusdarbuha table {
+<div id="plgkmiaxdt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#plgkmiaxdt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zusdarbuha thead, #zusdarbuha tbody, #zusdarbuha tfoot, #zusdarbuha tr, #zusdarbuha td, #zusdarbuha th {
+#plgkmiaxdt thead, #plgkmiaxdt tbody, #plgkmiaxdt tfoot, #plgkmiaxdt tr, #plgkmiaxdt td, #plgkmiaxdt th {
   border-style: none;
 }
 
-#zusdarbuha p {
+#plgkmiaxdt p {
   margin: 0;
   padding: 0;
 }
 
-#zusdarbuha .gt_table {
+#plgkmiaxdt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -595,12 +592,12 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#zusdarbuha .gt_caption {
+#plgkmiaxdt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zusdarbuha .gt_title {
+#plgkmiaxdt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -612,7 +609,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-bottom-width: 0;
 }
 
-#zusdarbuha .gt_subtitle {
+#plgkmiaxdt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -624,7 +621,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-top-width: 0;
 }
 
-#zusdarbuha .gt_heading {
+#plgkmiaxdt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -636,13 +633,13 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zusdarbuha .gt_bottom_border {
+#plgkmiaxdt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zusdarbuha .gt_col_headings {
+#plgkmiaxdt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -657,7 +654,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zusdarbuha .gt_col_heading {
+#plgkmiaxdt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -677,7 +674,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   overflow-x: hidden;
 }
 
-#zusdarbuha .gt_column_spanner_outer {
+#plgkmiaxdt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -689,15 +686,15 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   padding-right: 4px;
 }
 
-#zusdarbuha .gt_column_spanner_outer:first-child {
+#plgkmiaxdt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zusdarbuha .gt_column_spanner_outer:last-child {
+#plgkmiaxdt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zusdarbuha .gt_column_spanner {
+#plgkmiaxdt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -709,11 +706,11 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   width: 100%;
 }
 
-#zusdarbuha .gt_spanner_row {
+#plgkmiaxdt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zusdarbuha .gt_group_heading {
+#plgkmiaxdt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -739,7 +736,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   text-align: left;
 }
 
-#zusdarbuha .gt_empty_group_heading {
+#plgkmiaxdt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -754,15 +751,15 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   vertical-align: middle;
 }
 
-#zusdarbuha .gt_from_md > :first-child {
+#plgkmiaxdt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zusdarbuha .gt_from_md > :last-child {
+#plgkmiaxdt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zusdarbuha .gt_row {
+#plgkmiaxdt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -781,7 +778,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   overflow-x: hidden;
 }
 
-#zusdarbuha .gt_stub {
+#plgkmiaxdt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -794,7 +791,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   padding-right: 5px;
 }
 
-#zusdarbuha .gt_stub_row_group {
+#plgkmiaxdt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -808,15 +805,15 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   vertical-align: top;
 }
 
-#zusdarbuha .gt_row_group_first td {
+#plgkmiaxdt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zusdarbuha .gt_row_group_first th {
+#plgkmiaxdt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zusdarbuha .gt_summary_row {
+#plgkmiaxdt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -826,16 +823,16 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   padding-right: 5px;
 }
 
-#zusdarbuha .gt_first_summary_row {
+#plgkmiaxdt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zusdarbuha .gt_first_summary_row.thick {
+#plgkmiaxdt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zusdarbuha .gt_last_summary_row {
+#plgkmiaxdt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -845,7 +842,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zusdarbuha .gt_grand_summary_row {
+#plgkmiaxdt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -855,7 +852,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   padding-right: 5px;
 }
 
-#zusdarbuha .gt_first_grand_summary_row {
+#plgkmiaxdt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -865,7 +862,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#zusdarbuha .gt_last_grand_summary_row_top {
+#plgkmiaxdt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -875,11 +872,11 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zusdarbuha .gt_striped {
+#plgkmiaxdt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zusdarbuha .gt_table_body {
+#plgkmiaxdt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -888,7 +885,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zusdarbuha .gt_footnotes {
+#plgkmiaxdt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -902,7 +899,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zusdarbuha .gt_footnote {
+#plgkmiaxdt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -911,7 +908,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   padding-right: 5px;
 }
 
-#zusdarbuha .gt_sourcenotes {
+#plgkmiaxdt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -925,7 +922,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zusdarbuha .gt_sourcenote {
+#plgkmiaxdt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -933,72 +930,72 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   padding-right: 5px;
 }
 
-#zusdarbuha .gt_left {
+#plgkmiaxdt .gt_left {
   text-align: left;
 }
 
-#zusdarbuha .gt_center {
+#plgkmiaxdt .gt_center {
   text-align: center;
 }
 
-#zusdarbuha .gt_right {
+#plgkmiaxdt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zusdarbuha .gt_font_normal {
+#plgkmiaxdt .gt_font_normal {
   font-weight: normal;
 }
 
-#zusdarbuha .gt_font_bold {
+#plgkmiaxdt .gt_font_bold {
   font-weight: bold;
 }
 
-#zusdarbuha .gt_font_italic {
+#plgkmiaxdt .gt_font_italic {
   font-style: italic;
 }
 
-#zusdarbuha .gt_super {
+#plgkmiaxdt .gt_super {
   font-size: 65%;
 }
 
-#zusdarbuha .gt_footnote_marks {
+#plgkmiaxdt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zusdarbuha .gt_asterisk {
+#plgkmiaxdt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zusdarbuha .gt_indent_1 {
+#plgkmiaxdt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zusdarbuha .gt_indent_2 {
+#plgkmiaxdt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zusdarbuha .gt_indent_3 {
+#plgkmiaxdt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zusdarbuha .gt_indent_4 {
+#plgkmiaxdt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zusdarbuha .gt_indent_5 {
+#plgkmiaxdt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zusdarbuha .katex-display {
+#plgkmiaxdt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zusdarbuha div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#plgkmiaxdt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2720,23 +2717,23 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">columns =</span> <span class="fu">everything</span>()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="pwfwpsqrrs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pwfwpsqrrs table {
+<div id="tvlpzjuarb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tvlpzjuarb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pwfwpsqrrs thead, #pwfwpsqrrs tbody, #pwfwpsqrrs tfoot, #pwfwpsqrrs tr, #pwfwpsqrrs td, #pwfwpsqrrs th {
+#tvlpzjuarb thead, #tvlpzjuarb tbody, #tvlpzjuarb tfoot, #tvlpzjuarb tr, #tvlpzjuarb td, #tvlpzjuarb th {
   border-style: none;
 }
 
-#pwfwpsqrrs p {
+#tvlpzjuarb p {
   margin: 0;
   padding: 0;
 }
 
-#pwfwpsqrrs .gt_table {
+#tvlpzjuarb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2762,12 +2759,12 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#pwfwpsqrrs .gt_caption {
+#tvlpzjuarb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pwfwpsqrrs .gt_title {
+#tvlpzjuarb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2779,7 +2776,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-bottom-width: 0;
 }
 
-#pwfwpsqrrs .gt_subtitle {
+#tvlpzjuarb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2791,7 +2788,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-top-width: 0;
 }
 
-#pwfwpsqrrs .gt_heading {
+#tvlpzjuarb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2803,13 +2800,13 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#pwfwpsqrrs .gt_bottom_border {
+#tvlpzjuarb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pwfwpsqrrs .gt_col_headings {
+#tvlpzjuarb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2824,7 +2821,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#pwfwpsqrrs .gt_col_heading {
+#tvlpzjuarb .gt_col_heading {
   color: #FFFFFF;
   background-color: #4A83BE;
   font-size: 12px;
@@ -2844,7 +2841,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   overflow-x: hidden;
 }
 
-#pwfwpsqrrs .gt_column_spanner_outer {
+#tvlpzjuarb .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #4A83BE;
   font-size: 12px;
@@ -2856,15 +2853,15 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   padding-right: 4px;
 }
 
-#pwfwpsqrrs .gt_column_spanner_outer:first-child {
+#tvlpzjuarb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pwfwpsqrrs .gt_column_spanner_outer:last-child {
+#tvlpzjuarb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pwfwpsqrrs .gt_column_spanner {
+#tvlpzjuarb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2876,11 +2873,11 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   width: 100%;
 }
 
-#pwfwpsqrrs .gt_spanner_row {
+#tvlpzjuarb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pwfwpsqrrs .gt_group_heading {
+#tvlpzjuarb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2906,7 +2903,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   text-align: left;
 }
 
-#pwfwpsqrrs .gt_empty_group_heading {
+#tvlpzjuarb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2921,15 +2918,15 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   vertical-align: middle;
 }
 
-#pwfwpsqrrs .gt_from_md > :first-child {
+#tvlpzjuarb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pwfwpsqrrs .gt_from_md > :last-child {
+#tvlpzjuarb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pwfwpsqrrs .gt_row {
+#tvlpzjuarb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2948,7 +2945,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   overflow-x: hidden;
 }
 
-#pwfwpsqrrs .gt_stub {
+#tvlpzjuarb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2961,7 +2958,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   padding-right: 5px;
 }
 
-#pwfwpsqrrs .gt_stub_row_group {
+#tvlpzjuarb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2975,15 +2972,15 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   vertical-align: top;
 }
 
-#pwfwpsqrrs .gt_row_group_first td {
+#tvlpzjuarb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pwfwpsqrrs .gt_row_group_first th {
+#tvlpzjuarb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pwfwpsqrrs .gt_summary_row {
+#tvlpzjuarb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2993,16 +2990,16 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   padding-right: 5px;
 }
 
-#pwfwpsqrrs .gt_first_summary_row {
+#tvlpzjuarb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pwfwpsqrrs .gt_first_summary_row.thick {
+#tvlpzjuarb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pwfwpsqrrs .gt_last_summary_row {
+#tvlpzjuarb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3012,7 +3009,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#pwfwpsqrrs .gt_grand_summary_row {
+#tvlpzjuarb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3022,7 +3019,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   padding-right: 5px;
 }
 
-#pwfwpsqrrs .gt_first_grand_summary_row {
+#tvlpzjuarb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3032,7 +3029,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#pwfwpsqrrs .gt_last_grand_summary_row_top {
+#tvlpzjuarb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3042,11 +3039,11 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#pwfwpsqrrs .gt_striped {
+#tvlpzjuarb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pwfwpsqrrs .gt_table_body {
+#tvlpzjuarb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3055,7 +3052,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#pwfwpsqrrs .gt_footnotes {
+#tvlpzjuarb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3069,7 +3066,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#pwfwpsqrrs .gt_footnote {
+#tvlpzjuarb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3078,7 +3075,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   padding-right: 5px;
 }
 
-#pwfwpsqrrs .gt_sourcenotes {
+#tvlpzjuarb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3092,7 +3089,7 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#pwfwpsqrrs .gt_sourcenote {
+#tvlpzjuarb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3100,72 +3097,72 @@ Score (logrank) test = 13.72  on 2 df,   p=0.001</code></pre>
   padding-right: 5px;
 }
 
-#pwfwpsqrrs .gt_left {
+#tvlpzjuarb .gt_left {
   text-align: left;
 }
 
-#pwfwpsqrrs .gt_center {
+#tvlpzjuarb .gt_center {
   text-align: center;
 }
 
-#pwfwpsqrrs .gt_right {
+#tvlpzjuarb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pwfwpsqrrs .gt_font_normal {
+#tvlpzjuarb .gt_font_normal {
   font-weight: normal;
 }
 
-#pwfwpsqrrs .gt_font_bold {
+#tvlpzjuarb .gt_font_bold {
   font-weight: bold;
 }
 
-#pwfwpsqrrs .gt_font_italic {
+#tvlpzjuarb .gt_font_italic {
   font-style: italic;
 }
 
-#pwfwpsqrrs .gt_super {
+#tvlpzjuarb .gt_super {
   font-size: 65%;
 }
 
-#pwfwpsqrrs .gt_footnote_marks {
+#tvlpzjuarb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pwfwpsqrrs .gt_asterisk {
+#tvlpzjuarb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pwfwpsqrrs .gt_indent_1 {
+#tvlpzjuarb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pwfwpsqrrs .gt_indent_2 {
+#tvlpzjuarb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pwfwpsqrrs .gt_indent_3 {
+#tvlpzjuarb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pwfwpsqrrs .gt_indent_4 {
+#tvlpzjuarb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pwfwpsqrrs .gt_indent_5 {
+#tvlpzjuarb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pwfwpsqrrs .katex-display {
+#tvlpzjuarb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pwfwpsqrrs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#tvlpzjuarb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
