@@ -2,6 +2,8 @@
 title: "Classification of blood cells with CNN"
 ---
 
+This blood cell classification project was carried out in collaboration with two other team members. We worked together on the different stages of the project, from data exploration and preprocessing to model development and evaluation.
+
 # **Objectives**
 
 ::: {style="text-align: justify;"}
